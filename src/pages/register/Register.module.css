@@ -1,0 +1,57 @@
+.logobox {
+  /* padding: 1rem 2rem;
+  background: #fff;
+  width: 450px;
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 10px;
+
+ */
+
+  border: 2px solid #000;
+  padding: 1rem 2rem;
+  width: 450px;
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 10px;
+}
+
+.logo {
+  width: 30px;
+  font-size: 1rem;
+}
+
+.logoT {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #359cf0;
+}
+
+.logobox h2 {
+  margin-bottom: 20px;
+}
+
+.logo form {
+  display: flex;
+  flex-direction: column;
+}
+
+.logobox button {
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0px;
+  border-radius: 30px;
+  background: transparent;
+  border: 1px solid #999;
+  font-weight: 500;
+  cursor: pointer;
+}
