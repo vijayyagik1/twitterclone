@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 // import {BrowerRouter,Routes,Route} from '.react-router-dom';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/Home.jsx";
-import { RecoilRoot } from 'recoil';
+import { RecoilRoot } from "recoil";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     {/* <RecoilRoot> */}
@@ -27,5 +27,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
-
-
