@@ -1,0 +1,41 @@
+.twitter-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.twitter-icon {
+  font-size: 2.5rem;
+  color: #1da1f2;
+  margin-bottom: 20px;
+}
+
+.twitter-menu {
+  background-color: #fff;
+  width: 100%;
+  padding: 10px;
+}
+
+.twitter-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.twitter-menu li {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.twitter-menu li:hover {
+  background-color: #f5f8fa;
+}
+
+.twitter-menu li span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-left: 10px;
+}
