@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./Login.module.css";
 import { TextField } from "@mui/material";
 import { TiSocialTwitter } from "react-icons/ti";
 import { FcGoogle } from "react-icons/fc";
 import { BsApple } from "react-icons/bs";
-import {Link} from "react-router-dom"
 
 export const Login = () => {
+  const [loginInput, setLoginInput] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleInput = (e) => {
+    const { value, name } = e.target;
+
+    setLoginInput(() => {
+      return { ...loginInput, [name]: value };
+    });
+  };
+  const handleFormData = () => {
+    e.preventDefault();
+    console.log(loginInput);
+  };
+
   return (
     <div className={style.logobox}>
       <TiSocialTwitter className={style.logoT} />
@@ -18,39 +34,47 @@ export const Login = () => {
       </button>
       <button>
         <BsApple className={style.logo} />
-        Sign in with Apple
+        Sign in with Google
       </button>
 
       <hr></hr>
       <span>Or</span>
 
-      <form>
+      <form onSubmit={handleFormData}>
         <div className={style.userfield}>
           <TextField
-            id="outlined-basic"
-            label="Email,username"
+            sx={{
+              width: "100%",
+            }}
+            label="Email"
             variant="outlined"
-            className={style.textField}
+            type="email"
+            name="email"
+            className={style.inputfield}
+            onChange={handleInput}
           />
         </div>
 
-        <div className={style.textField}>
-          <TextField 
-          id="outlined-basic" 
-          label="password"
-          variant="outlined" 
-          className={style.textField}
-           />
+        <div className={style.userfield}>
+          <TextField
+            sx={{
+              width: "100%",
+            }}
+            label="Password"
+            variant="outlined"
+            type="password"
+            name="password"
+            className={style.inputfield}
+            onChange={handleInput}
+          />
         </div>
         <button>Log in</button>
       </form>
 
-      <button>Forget Password</button>
+      <button type="submit">Forget Password</button>
       <p>
-        Don't Have an account?<Link>Sign up</Link>
+        Don't Have an account<a>Sign up</a>
       </p>
     </div>
   );
 };
-
-
