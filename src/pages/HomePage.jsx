@@ -134,13 +134,9 @@ export default function HomePage() {
 function SideBar() {
   return (
     <ul>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
+      <li>LeftSideBar</li>
+      <li>LeftSideBar</li>
+      <li>LeftSideBar</li>
     </ul>
   );
 }
@@ -148,12 +144,9 @@ function SideBar() {
 function RightSideBar() {
   return (
     <ul>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
+      <li>RightSideBar</li>
+      <li>RightSideBar</li>
+      <li>RightSideBar</li>
     </ul>
   );
 }
