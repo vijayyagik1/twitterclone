@@ -1,0 +1,77 @@
+.who-to-follow {
+  border: 1px solid #657786;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #fff;
+  width: 300px;
+  margin: 14px;
+  position: fixed;
+  bottom: 80px;
+  right: 80px;
+}
+
+.who-to-follow-heading {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.who-to-follow-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.who-to-follow-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.who-to-follow-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.who-to-follow-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.who-to-follow-name {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.who-to-follow-button {
+  background-color: #000;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  width: 120px;
+  height: 40px;
+}
+
+.who-to-follow-button:hover {
+  background-color: #1da1f2;
+}
+
+.who-to-follow-icon {
+  margin-right: 8px;
+}
+
+.who-to-follow-show-more {
+  background-color: transparent;
+  border: none;
+  color: #1da1f2;
+  cursor: pointer;
+  margin-top: 12px;
+}
