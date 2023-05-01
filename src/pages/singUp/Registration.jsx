@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import style from "./Register.module.css";
+import style from "./Registration.module.css";
 import { TextField, Button } from "@mui/material";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { FcGoogle } from "react-icons/fc";
 import { BsApple } from "react-icons/bs";
 import Swal from "sweetalert2";
 
-export const Register = () => {
+
+const Register = () => {
   const [hide, setHide] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -25,7 +26,7 @@ export const Register = () => {
   function handlePhone(event) {
     setPhone(event.target.value);
     if (phone.length !== 9) {
-      setPh("phone number must be 10 digit");
+      setPh("phone number must be 10 digit.");
     } else {
       setPh("");
     }
@@ -43,8 +44,7 @@ export const Register = () => {
 
   function handlePassword(event) {
     setPassword(event.target.value);
-    // const pwRegEx = /^(?=.\d)(?=.[a-z])(?=.[A-Z])(?!.\s).{6,20}$/;
-    const pwRegEx=/.[a-z]/
+    const pwRegEx = /^(?=.\d)(?=.[a-z])(?=.[A-Z])(?!.\s).{6,20}$/;
     if (pwRegEx.test(password)) {
       setPW("");
     } else if (!pwRegEx.test(password) && password !== " ") {
@@ -228,3 +228,5 @@ export const Register = () => {
     </div>
   );
 };
+
+export default Register;

@@ -1,80 +1,205 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import style from "./Login.module.css";
-import { TextField } from "@mui/material";
-import { TiSocialTwitter } from "react-icons/ti";
-import { FcGoogle } from "react-icons/fc";
-import { BsApple } from "react-icons/bs";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import CloseIcon from "@mui/icons-material/Close";
+import GoogleIcon from "@mui/icons-material/Google";
+import AppleIcon from "@mui/icons-material/Apple";
+import { TextField, Button } from "@mui/material";
 
-export const Login = () => {
-  const [loginInput, setLoginInput] = useState({
-    email: "",
-    password: "",
-  });
+import IconButton from "@mui/material/IconButton";
 
-  const handleInput = (e) => {
-    const { value, name } = e.target;
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
 
-    setLoginInput(() => {
-      return { ...loginInput, [name]: value };
-    });
-  };
-  const handleFormData = () => {
-    e.preventDefault();
-    console.log(loginInput);
+import FormControl from "@mui/material/FormControl";
+
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+
+export default function MyLogin() {
+  const [disabled, setDisabled] = useState(true);
+  const [loginDisabled, setLoginDisabled] = useState(true);
+  const [hide, setHide] = useState(true);
+  const [input, setInput] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+  const navigate = useNavigate();
+
+  const userDetails = JSON.parse(localStorage.getItem("userData")) || [];
+
+  const userExist = userDetails.find(
+    (user) =>
+      user.name === input || user.email === input || user.phone === input
+  );
+  //  console.log(user.input);
+  function handleNext() {
+    setDisabled(false);
+    if (userExist) {
+      setHide(false);
+    } else {
+      setError(true);
+    }
+  }
+
+  function handleNextInput(e) {
+    setInput(e.target.value);
+    setDisabled(false);
+  }
+
+  function handleLoginInput(e) {
+    setPassword(e.target.value);
+    setLoginDisabled(false);
+  }
+
+  const validUser = userDetails.find((user) => user.password === password);
+  const activeUser = userDetails.find(
+    (user) => user.active.isActive === false && user.password === password
+  );
+  function handleLoginClick() {
+    if (validUser) {
+      const confirmation = window.confirm(
+        "Login successfully! Click OK to go to Home page."
+      );
+      if (confirmation) {
+        activeUser.active.isActive = true;
+        localStorage.setItem("userData", JSON.stringify(userDetails));
+        navigate("/");
+      }
+    }
+  }
+
+  const [showPassword, setShowPassword] = React.useState(false);
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
   };
 
   return (
-    <div className={style.logobox}>
-      <TiSocialTwitter className={style.logoT} />
-      <h2>Sign In to Twitter</h2>
-
-      <button>
-        <FcGoogle className={style.logo} />
-        Sign in with Google
-      </button>
-      <button>
-        <BsApple className={style.logo} />
-        Sign in with Google
-      </button>
-
-      <hr></hr>
-      <span>Or</span>
-
-      <form onSubmit={handleFormData}>
-        <div className={style.userfield}>
-          <TextField
-            sx={{
-              width: "100%",
-            }}
-            label="Email"
-            variant="outlined"
-            type="email"
-            name="email"
-            className={style.inputfield}
-            onChange={handleInput}
-          />
+    <div className={style.main_div}>
+      <div className={style.form_box}>
+        <div className={style.header}>
+          <div className={style.cross}>
+            <p>
+              {" "}
+              <CloseIcon onClick={() => navigate(-1)} />{" "}
+            </p>
+          </div>
+          <div className={style.logo}>
+            <span>
+              <TwitterIcon
+                sx={{
+                  color: " rgb(29, 155, 240)",
+                  fontSize: "40px",
+                }}
+              />{" "}
+            </span>
+          </div>
         </div>
-
-        <div className={style.userfield}>
-          <TextField
-            sx={{
-              width: "100%",
-            }}
-            label="Password"
+        <div className={style.form} style={{ display: hide ? "" : "none" }}>
+          <span className={style.heading}>Sign in to Twitter</span>
+          <Button
+            sx={{ borderRadius: "35px", color: "black" }}
             variant="outlined"
-            type="password"
-            name="password"
-            className={style.inputfield}
-            onChange={handleInput}
-          />
-        </div>
-        <button>Log in</button>
-      </form>
+          >
+            {" "}
+            <GoogleIcon /> Sign Up with Google
+          </Button>
+          <Button
+            sx={{ borderRadius: "35px", color: "black", ":hover": {backgroundColor: '#dfe1e3', border: '1px solid #eee'}, border: '1px solid #eee' }}
+            variant="outlined"
+          >
+            {" "}
+            <AppleIcon /> Sign Up with Apple
+          </Button>
 
-      <button type="submit">Forget Password</button>
-      <p>
-        Don't Have an account<a>Sign up</a>
-      </p>
+          <span>or</span>
+          <TextField
+            sx={{ border: "1px" }}
+            label="Phone, email, or username"
+            variant="filled"
+            error={error}
+            helperText={error ? "Incorrect entry." : ""}
+            value={input}
+            onChange={handleNextInput}
+          />
+          <Button
+            sx={{ borderRadius: "35px", bgcolor: "black" }}
+            variant="contained"
+            onClick={handleNext}
+            disabled={disabled}
+          >
+            {" "}
+            Next
+          </Button>
+          <Button
+            sx={{ borderRadius: "35px", color: "black",":hover": {backgroundColor: '#dfe1e3', border: '1px solid #eee' }, border: '1px solid #eee' }}
+            variant="outlined"
+          >
+            {" "}
+            Forgot Password?
+          </Button>
+          <p>
+            Don't have an account? <Link to="/signup">Sign up</Link>{" "}
+          </p>
+        </div>
+        <div style={{ display: hide ? "none" : "" }}>
+          <div className={style.loginForm}>
+            <h1>Enter your password</h1>
+            <TextField
+              sx={{ width: "100%" }}
+              label="Phone, email, or username"
+              variant="filled"
+              disabled
+              value={input}
+            />
+            <FormControl
+              sx={{ width: "100%" }}
+              variant="outlined"
+              value={password}
+              onChange={handleLoginInput}
+            >
+              <InputLabel htmlFor="outlined-adornment-password">
+                Password
+              </InputLabel>
+              <OutlinedInput
+                id="outlined-adornment-password"
+                type={showPassword ? "text" : "password"}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                label="Password"
+              />
+            </FormControl>
+            <Button
+              sx={{
+                borderRadius: "35px",
+                bgcolor: "black",
+                height: "50px",
+                marginTop: "60px",
+              }}
+              variant="contained"
+              disabled={loginDisabled}
+              onClick={handleLoginClick}
+            >
+              Log in{" "}
+            </Button>
+            <p>
+              Don't have an account? <Link to="/signup"> <span >Sign up</span></Link>{" "}
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
-};
+}
