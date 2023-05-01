@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import style from "./Registration.module.css";
@@ -44,7 +44,7 @@ const Register = () => {
 
   function handlePassword(event) {
     setPassword(event.target.value);
-    const pwRegEx = /^(?=.\d)(?=.[a-z])(?=.[A-Z])(?!.\s).{6,20}$/;
+    // const pwRegEx = /^(?=.\d)(?=.[a-z])(?=.[A-Z])(?!.\s).{6,20}$/;
     if (pwRegEx.test(password)) {
       setPW("");
     } else if (!pwRegEx.test(password) && password !== " ") {

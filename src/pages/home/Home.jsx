@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import style from "./Home.module.css";
 import CreateTweet from "../../component/createTweet/CreateTweet";
 import UserFollowData from "../../component/UserFollowData";
 import UserPost from "../../component/UserPost/UserPost";
 import SectionOne from "./leftSection/SectionOne";
-
+import Who from "../home/who/whotofollow";
+import SearchBar from "./who/Searchbar";
 const Home = () => {
   const [isTweet, setIsTweet] = useState(true);
 
   return (
     <div className={style.container_post}>
-      <SectionOne/>
+      <SearchBar />
+      <SectionOne />
       <div className={style.post}>
         <div className={style.transparent}>
           <div className={style.home}>
@@ -29,6 +31,8 @@ const Home = () => {
         </div>
       </div>
       <CreateTweet />
+
+      <Who />
       {isTweet ? <UserPost /> : <UserFollowData />}
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import style from "./SectionOne.module.css";
 import Avatar from "@mui/material/Avatar";
 import {

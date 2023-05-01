@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import  { useEffect, useRef, useState } from "react";
 import style from "./CreateTweet.module.css";
 import { useNavigate } from "react-router-dom"
 import PhotoSizeSelectActualIcon from "@mui/icons-material/PhotoSizeSelectActual";
