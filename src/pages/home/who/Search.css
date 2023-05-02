@@ -46,6 +46,13 @@
   right: 100px;
   margin: 30px;
   border-radius: 30px;
+      position: fixed;
+  /* bottom: 8px; */
+  right: 100px;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  background-color: lightgray;
+
   /* size-adjust: 15px; */
 }
 

@@ -75,28 +75,35 @@ const allUsers = [
 // console.log(allUsers)
 const WhoToFollow = () => {
   const [showMore, setShowMore] = useState(false);
-  const [users, setUsers] = useState(allUsers.slice(0, 3));
+  const [users, setUsers] = useState(allUsers.slice(0, 2));
+  const [isFollowing, setIsFollowing] = useState(false);
 
   //   const handleFollow = (userId,) => {
   //     console.log(`Follow user ${userId}`);
   //     // <link rel="stylesheet" href="https://twitter.com/TheRock" />;
   //   };
 
-//   const handleFollow = (userId) => {
-//     console.log(`Follow user ${userId}`);
-//     window.location.href = `https://twitter.com/TheRock/${userId}`;
-//   };
+  //   const handleFollow = (userId) => {
+  //     console.log(`Follow user ${userId}`);
+  //     window.location.href = `https://twitter.com/TheRock/${userId}`;
+  //   };
 
   const handleFollow = (userId) => {
+    // setUsers((prevState) =>
+    //   prevState.map((user) =>
+    //     user.id === userId ? { ...user, isFollowing: true } : user
+    //   )
+    // );
     setUsers((prevState) =>
       prevState.map((user) =>
         user.id === userId ? { ...user, isFollowing: true } : user
       )
     );
+    // setIsFollowing(true)
   };
 
   const handleShowMore = () => {
-    const newUsers = showMore ? allUsers.slice(0, 3) : allUsers;
+    const newUsers = showMore ? allUsers.slice(0, 2) : allUsers;
     setUsers(newUsers);
     setShowMore(!showMore);
   };
@@ -115,12 +122,19 @@ const WhoToFollow = () => {
             />
             <div className={styles.who_to_follow_info}>
               <span className={styles.who_to_follow_name}>{user.name}</span>
-              {!user.isFollowing && (
+              {!user.isFollowing ? (
                 <button
                   onClick={() => handleFollow(user.id)}
                   className={styles.who_to_follow_button}
                 >
-                  <FaUserPlus className={styles.who_to_follow_icon} /> Follow
+                  <FaUserPlus className={styles.followIcon} /> Follow
+                </button>
+              ) : (
+                <button
+                  onClick={() => handleFollow(user.id)}
+                  className={styles.who_to_follow_button}
+                >
+                  <FaUserPlus className={styles.followIcon} /> Following
                 </button>
               )}
             </div>

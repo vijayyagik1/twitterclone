@@ -5,13 +5,23 @@
   background-color: #fff;
   width: 300px;
   margin: 14px;
-  position: fixed;
-  bottom: 80px;
-  right: 80px;
+  /* position: fixed; */
+  /* bottom: 80px;
+  right: 80px; */
+  /* position: relative; */
     /* display: flex; */
-  align-items: flex-end;
+  /* align-items: flex-end;
   justify-content: flex-end;
-  position: absolute;
+  /* position: absolute; */
+  /* position: relative; */
+  /* position: sticky; */
+    position: fixed;
+  bottom: 8px;
+  right: 85px;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  background-color: lightgray;
+
 }
 
 .who_to_follow_heading {

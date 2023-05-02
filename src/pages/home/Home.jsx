@@ -6,6 +6,7 @@ import UserPost from "../../component/UserPost/UserPost";
 import SectionOne from "./leftSection/SectionOne";
 import Who from "../home/who/whotofollow";
 import SearchBar from "./who/Searchbar";
+import WhatsHappeningPage from "./who/WhatsHappeningPage";
 const Home = () => {
   const [isTweet, setIsTweet] = useState(true);
 
@@ -31,7 +32,7 @@ const Home = () => {
         </div>
       </div>
       <CreateTweet />
-
+      <WhatsHappeningPage/>
       <Who />
       {isTweet ? <UserPost /> : <UserFollowData />}
     </div>
